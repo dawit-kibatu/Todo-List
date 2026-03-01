@@ -1,0 +1,12 @@
+#staff{
+    height: 120vh;
+    width: 100vw;
+    grid-column:1/13 ;
+    grid-row: 1/6;
+}
+#description{
+    padding: 5%;
+    grid-column:1/13 ;
+    grid-row:6/11;
+    font-size: larger;
+}
