@@ -7,7 +7,28 @@
 </head>
 <body>
     <div id="content">
-         <button class="add">Add Task</button>
+         <div class="sidebar">
+            <div class="home">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#black"><path d="M240-500v-220h220v220H240Zm0 260v-220h220v220H240Zm260-260v-220h220v220H500Zm0 260v-220h220v220H500ZM320-580h60v-60h-60v60Zm260 0h60v-60h-60v60ZM320-320h60v-60h-60v60Zm260 0h60v-60h-60v60ZM380-580Zm200 0Zm0 200Zm-200 0ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"/></svg>
+                <div style="margin-top: 5%;">All Tasks</div>
+            </div>
+            <div class="dates">
+                <div class="today">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M291.5-411.5Q280-423 280-440t11.5-28.5Q303-480 320-480t28.5 11.5Q360-457 360-440t-11.5 28.5Q337-400 320-400t-28.5-11.5Zm160 0Q440-423 440-440t11.5-28.5Q463-480 480-480t28.5 11.5Q520-457 520-440t-11.5 28.5Q497-400 480-400t-28.5-11.5Zm160 0Q600-423 600-440t11.5-28.5Q623-480 640-480t28.5 11.5Q680-457 680-440t-11.5 28.5Q657-400 640-400t-28.5-11.5ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+                    <div style="margin-top: 5%;">Today</div>
+                </div>
+                <div class="upcoming">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M160-120q-33 0-56.5-23.5T80-200v-200q0-33 23.5-56.5T160-480h200q0 50 35 85t85 35q50 0 85-35t35-85h200q33 0 56.5 23.5T880-400v200q0 33-23.5 56.5T800-120H160Zm0-80h640v-200H664q-25 55-74.5 87.5T480-280q-60 0-109.5-32.5T296-400H160v200Zm544-328-56-56 142-142 56 56-142 142Zm-448 0L114-670l56-56 142 142-56 56Zm184-112v-200h80v200h-80ZM160-200h640-640Z"/></svg>
+                    <div style="margin-top: 5%;">Upcoming</div>
+                </div>
+            </div>
+            <div class="tags" style="margin-top: 5%;">Tags</div>
+         </div>
+         <div class="taskDisp">
+             <div class="tasks">
+             </div>
+             <button class="add"> + Add Task</button>
+         </div>
          <div class="popup">
             <legend style="font-size: large; font-weight: bold;">Add Your Task</legend>
             <div>
