@@ -1,0 +1,25 @@
+.popup{
+    width: 400px;
+    background-color: white;
+    border-radius:6px;
+    top: 0%;
+    left: 50%;
+    transform:translate(-50%,-50%) scale(0.1) ;
+    position: absolute;
+    text-align: center;
+    padding: 40px 30px 30px;
+    color: #333;
+    height: 300px;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid black;
+    background-color:#EDDCC6 ;
+}
+.openPop{
+    top: 50%;
+    transform:translate(-50%,-50%) scale(1);
+    visibility: visible;
+}

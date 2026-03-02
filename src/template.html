@@ -6,6 +6,32 @@
     <title>Todo List</title>
 </head>
 <body>
-    <div id="content"></div>
+    <div id="content">
+         <button class="add">Add Task</button>
+         <div class="popup">
+            <legend style="font-size: large; font-weight: bold;">Add Your Task</legend>
+            <div>
+                <label for="name">Task name: </label>
+                <input type="text" id="name" style="margin-left: 20px;">
+            </div>
+            <div>
+                <label for="duedate" style="margin-left:2px">duedate: </label>
+                <input type="date" id="duedate" style="width: 170px; margin-left: 40px;">
+            </div>
+            <!-- <div>
+                <label for="pages">Page count: </label>
+                <input type="number" id="pages" style="margin-left: 17px;">
+            </div>
+            <div>
+                <label for="readOrNot">Have you read this book?</label>
+                <input type="radio" name="bookRead"  value="yes" checked>Yes
+                <input type="radio" name="bookRead"  value="no">No
+            </div> -->
+            <div class="buttons">
+                <button type="submit" id="submitBtn">Submit</button>
+                <button id="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

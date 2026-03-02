@@ -8,19 +8,36 @@ let home=function(){
             duedate
         }
         }
-    let task1=createTask("finding a job","soon");
-    console.log(task1)
     //stores the task in localstorage
     function storeTask(task){
         localStorage.setItem(`${task.name}`,JSON.stringify(task))
     }
-    storeTask(task1);
-    console.log(localStorage.getItem("finding a job"));
     //removes the task from the local storage
     function deleteTask(task){
         localStorage.removeItem(`${task.name}`)
     }
-    deleteTask(task1)
-    console.log(localStorage.getItem(`${task1.name}`));
+    let popup=document.querySelector(".popup");
+    let addBtn=document.querySelector(".add");
+    let submitBtn=document.querySelector("#submitBtn")
+    addBtn.addEventListener("click",()=>{
+        popup.classList.add("openPop");
+    })
+    submitBtn.addEventListener("click",()=>{
+        let taskName=document.querySelector("#name").value;
+        let dueDate=document.querySelector("#duedate").value;
+        let task=createTask(taskName,dueDate);
+        storeTask(task);
+        popup.classList.remove("openPop");
+        clearInputField();
+    })
+    let cancelBtn=document.querySelector("#cancel");
+    cancelBtn.addEventListener("click",()=>{
+        popup.classList.remove("openPop");
+        clearInputField();
+    });
+    function clearInputField(){
+         document.querySelector("#name").value=""
+         document.querySelector("#duedate").value=""
+}
 }
 export default home
