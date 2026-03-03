@@ -33,7 +33,6 @@ body{
 }
 #content{
    display: flex;
-   border: solid black;
    height: 100vh;
 }
 .sidebar{
@@ -49,6 +48,8 @@ body{
     color: #6367FF;
     font-size: clamp(16px, 2.5vw, 20px);
     font-weight: bold;
+    overflow-x:hidden;
+    overflow-y: scroll;
 }
 .taskDisp{
    border: solid pink 2px;
@@ -59,12 +60,25 @@ body{
    display: flex;
    flex-direction: column;
    align-items: center;
+   padding-top:1vw ;
+   overflow: scroll;
 }
 .home{
     grid-row: 1/3;
 }
+#addBtn{
+    grid-row: 4/5;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    font-size: 1.2rem;
+    background-color:#EDDCC6;
+    font-family: font1,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .dates{
-    grid-row: 4/6;
+    grid-row: 5/7;
     display: flex;
     flex-direction: column;
     gap:2%;
@@ -72,16 +86,11 @@ body{
 .tags{
     grid-row: 8/12;
 }
-.home,.dates>div,.tags{
+.home,.dates>div,.tags,#addBtn{
     grid-column: 1/8;
     display: flex;
     margin: 1rem;
     gap: 5px;
-}
-.home:hover,.dates>div:hover,.tags:hover{
-    text-decoration:underline orange 5px;
-    text-underline-offset:0.5rem ;
-    
 }
 svg{
     fill:black;
@@ -99,6 +108,30 @@ svg{
 .add:hover{
     text-decoration: underline pink 2px;
 }
-.dltBtn:hover{
-    background-color:red;
+#addBtn:hover{
+    text-decoration: underline black 2px;
+
+}
+.dltBtn{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border: solid 1px gray;
+    grid-column: span;
+    background-color: white;
+}
+.task{
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: solid salmon;
+    width: 60vw;
+    padding: 2%;
+    font-size: clamp(20px, 1rem, 60px);
+    justify-content: flex-end;
+}
+.tasks>:first-child{
+    border-top: solid salmon;
+}
+.taskname{
+   padding-left: 20px;
 }
