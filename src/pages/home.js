@@ -46,9 +46,15 @@ let home=function(){
         let div=document.createElement("div");
         div.classList.add("task");
         div.innerHTML=`
-        <div>${task.name}<div/>
-        <div>${task.duedate}<div/>
+        <div>${task.name}</div>
+        <div>${task.duedate}</div>
         `
+        let dltBtn=document.createElement("button");
+        dltBtn.addEventListener("click",()=>{
+             div.remove()
+             deleteTask(task);
+        })
+        div.appendChild(dltBtn)
         tasks.appendChild(div)
     }
     //gets the tasks from localStorage and prints them out on the page

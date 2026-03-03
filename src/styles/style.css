@@ -99,3 +99,6 @@ svg{
 .add:hover{
     text-decoration: underline pink 2px;
 }
+.dltBtn:hover{
+    background-color:red;
+}
