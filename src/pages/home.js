@@ -35,7 +35,7 @@ let home=function(){
         storeTask(task);
         popup.classList.remove("openPop");
         clearInputField();
-        displayTasks(task)
+        displayTasks(task);
         }     
     })
     let cancelBtn=document.querySelector("#cancel");
@@ -54,11 +54,6 @@ let home=function(){
         let taskname=document.createElement("div")
         taskname.textContent=task.name;
         taskname.classList.add("taskname");
-        // div.innerHTML=`
-        // <div class="taskname">${task.name}</div>
-        // `
-        // <div>${task.duedate}</div>
-
         let dltBtn=document.createElement("button");
         dltBtn.classList.add("dltBtn")
         dltBtn.addEventListener("click",()=>{
@@ -78,11 +73,70 @@ let home=function(){
     }
     //gets the tasks from localStorage and prints them out on the page
     function getTasks(){
+        let tasks=document.querySelector(".tasks");
+        tasks.innerHTML="";
         const keys=Object.keys(localStorage);
         keys.map((key)=>{
             let task=JSON.parse(localStorage.getItem(key));
-            displayTasks(task)
+            displayTasks(task);
         })
     }
+    //returns 3 array of today tasks upcoming tasks or overdue tasks
+    function taskAssign(){
+        let today=[];
+        let upcoming=[];
+        let overdue=[];
+        let date=new Date();
+        const keys=Object.keys(localStorage);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Ensures 2 digits
+        const day = date.getDate().toString().padStart(2, '0');       // Ensures 2 digits
+        // Format to "DD-MM-YYYY"
+        const formattedDateManual = `${year}-${month}-${day}`;
+        keys.map((key)=>{
+           let task=JSON.parse(localStorage.getItem(key));
+            if(task.duedate==formattedDateManual){
+                today.push(task)
+            }
+            else if(task.duedate>=formattedDateManual){
+                upcoming.push(task)
+            }
+            else{
+                overdue.push(task)
+            }
+        })
+        return{today,upcoming,overdue};
+    }
+    //Event listners that display tasks based on the due dates
+    let todayTasks=document.querySelector(".today");
+    todayTasks.addEventListener("click",()=>{
+        let tasks=document.querySelector(".tasks");
+        tasks.innerHTML="";
+        let todayTasks=taskAssign().today
+        todayTasks.forEach((task)=>{
+            displayTasks(task);
+        })
+    })
+    let upcomingTasks=document.querySelector(".upcoming");
+    upcomingTasks.addEventListener("click",()=>{
+        let tasks=document.querySelector(".tasks");
+        tasks.innerHTML="";
+        let upcomingTasks=taskAssign().upcoming
+        upcomingTasks.forEach((task)=>{
+            displayTasks(task);
+        })
+    })
+    let overdueTasks=document.querySelector(".overdue");
+    overdueTasks.addEventListener("click",()=>{
+        let tasks=document.querySelector(".tasks");
+        tasks.innerHTML="";
+        let overdueTasks=taskAssign().overdue
+        overdueTasks.forEach((task)=>{
+            displayTasks(task);
+        })
+    })
+    //Event listener on the home icon to display all the tasks
+    let allTasks=document.querySelector(".home");
+    allTasks.addEventListener("click", getTasks)
 }
 export default home
