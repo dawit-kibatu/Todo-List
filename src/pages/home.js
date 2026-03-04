@@ -2,11 +2,13 @@ import { mdiFunctionVariant } from "@mdi/js";
 import "../styles/style.css";
 let home=function(){
     let tasks=document.querySelector(".tasks");
-    getTasks()
-    function createTask(name,duedate){
+    let allTags=[];
+    getTasks();
+    function createTask(name,duedate,tag){
         return{
             name,
-            duedate
+            duedate,
+            tag
         }
         }
     //stores the task in localstorage
@@ -30,8 +32,9 @@ let home=function(){
     submitBtn.addEventListener("click",()=>{
         let taskName=document.querySelector("#name").value;
         let dueDate=document.querySelector("#duedate").value;
+        let taskTag=document.querySelector("#tag").value;
         if(dueDate!==""){
-        let task=createTask(taskName,dueDate);
+        let task=createTask(taskName,dueDate,taskTag);
         storeTask(task);
         popup.classList.remove("openPop");
         clearInputField();
@@ -46,9 +49,11 @@ let home=function(){
     function clearInputField(){
          document.querySelector("#name").value=""
          document.querySelector("#duedate").value=""
+         document.querySelector("#tag").value=""
         }
     //displays the tasks on the page
     function displayTasks(task){
+        displayTags();
         let div=document.createElement("div");
         div.classList.add("task");
         let taskname=document.createElement("div")
@@ -128,7 +133,6 @@ let home=function(){
     })
     let overdueTasks=document.querySelector(".overdue");
     overdueTasks.addEventListener("click",()=>{
-        let tasks=document.querySelector(".tasks");
         tasks.innerHTML="";
         let overdueTasks=taskAssign().overdue
         overdueTasks.forEach((task)=>{
@@ -137,6 +141,39 @@ let home=function(){
     })
     //Event listener on the home icon to display all the tasks
     let allTasks=document.querySelector(".home");
-    allTasks.addEventListener("click", getTasks)
+    allTasks.addEventListener("click", getTasks);
+    //displays tags of a task in their separte part in the sidebar
+    function displayTags(){
+        const keys=Object.keys(localStorage);
+        let tags=document.querySelector(".tags");
+        tags.innerHTML="";
+        tags.textContent="#Tags"
+        keys.map((key)=>{
+            let task=JSON.parse(localStorage.getItem(key));
+            if(task.tag!=="none"){
+                if(!(allTags.includes(task.tag))){
+                     allTags.push(task.tag)
+                }
+            }
+        })
+        console.log(allTags)
+        allTags.forEach((e)=>{
+            let taskElement=document.createElement("div");
+            taskElement.textContent=e;
+            tags.appendChild(taskElement);
+            taskElement.addEventListener("click",()=>{
+                keys.map((key)=>{
+                    let task=JSON.parse(localStorage.getItem(key));
+                    tasks.innerHTML="";
+                    if(taskElement.textContent==task.tag){
+                        displayTasks(task)
+                    }
+                   
+                })
+
+            })
+        })
+    }
+
 }
 export default home
