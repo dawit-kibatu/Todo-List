@@ -117,31 +117,49 @@ let home=function(){
     todayTasks.addEventListener("click",()=>{
         let tasks=document.querySelector(".tasks");
         tasks.innerHTML="";
-        let todayTasks=taskAssign().today
-        todayTasks.forEach((task)=>{
+        let todayTask=taskAssign().today
+        todayTask.forEach((task)=>{
             displayTasks(task);
         })
+        disableActive();
+        todayTasks.classList.add("active");
     })
     let upcomingTasks=document.querySelector(".upcoming");
     upcomingTasks.addEventListener("click",()=>{
         let tasks=document.querySelector(".tasks");
         tasks.innerHTML="";
-        let upcomingTasks=taskAssign().upcoming
-        upcomingTasks.forEach((task)=>{
+        let upcomingTask=taskAssign().upcoming
+        upcomingTask.forEach((task)=>{
             displayTasks(task);
         })
+        disableActive();
+        upcomingTasks.classList.add("active");
     })
     let overdueTasks=document.querySelector(".overdue");
     overdueTasks.addEventListener("click",()=>{
         tasks.innerHTML="";
-        let overdueTasks=taskAssign().overdue
-        overdueTasks.forEach((task)=>{
+        let overdueTask=taskAssign().overdue
+        overdueTask.forEach((task)=>{
             displayTasks(task);
         })
+        disableActive();
+        overdueTasks.classList.add("active");
     })
     //Event listener on the home icon to display all the tasks
     let allTasks=document.querySelector(".home");
-    allTasks.addEventListener("click", getTasks);
+    allTasks.addEventListener("click", ()=>{
+        getTasks();
+        disableActive();
+        allTasks.classList.add("active");
+        console.log(allTasks)
+    });
+    //removes the class "active" from all elements
+    function disableActive(){
+        let activeElement=document.querySelector(".active");
+        if(activeElement!=null){
+            activeElement.classList.remove("active");
+        }  
+    }
     //displays tags of a task in their separte part in the sidebar
     function displayTags(){
         const keys=Object.keys(localStorage);

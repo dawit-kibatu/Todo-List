@@ -15,8 +15,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: solid black;
-    background-color:#EDDCC6 ;
+    border: solid pink;
+    background-color:#EDDCC6;
 }
 .openPop{
     top: 50%;
@@ -25,7 +25,6 @@
 }
 body{
     margin: 0px;
-    overflow: hidden;
     font-family:font1,Georgia, 'Times New Roman', Times, serif ;
 }
 @font-face {
@@ -86,7 +85,7 @@ body{
     gap:2%;
 }
 .tags{
-    grid-row: 9/12;
+    grid-row: 10/12;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,6 +100,11 @@ body{
     display: flex;
     margin: 0.8rem;
     gap: 5px;
+}
+.home:hover,.today:hover,.upcoming:hover,.overdue:hover,.home.active,.today.active,.upcoming.active,.overdue.active{
+    background-color:#e8d7c0;
+    margin-left:-17px;
+    cursor: pointer;
 }
 svg{
     fill:black;
@@ -144,4 +148,8 @@ svg{
 }
 .taskname{
    padding-left: 20px;
+}
+#tag{
+    width: 100px;
+    align-self: center;
 }
